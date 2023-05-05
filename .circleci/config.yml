@@ -15,7 +15,7 @@ jobs:
     - run: python tests.py
 
 workflows:
-  build_and _test:
+  build_and_test:
     jobs:
       - build
       - test:
