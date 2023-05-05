@@ -5,8 +5,8 @@ jobs:
     docker:
       - image: cimg/python:3.11
     steps:
-    - checkout
-    - run: python main.py
+      - checkout
+      - run: python main.py
   test:
     docker:
       - image: cimg/python:3.11
@@ -17,18 +17,18 @@ jobs:
     docker:
       - image: cimg/python:3.11
     steps:
-      - run: echo "Deploying to prod server"
+      - run: echo "Deploying to production server"
 
 workflows:
-  build_and_test:
+  build_and_test_deploy:
     jobs:
       - build
       - test:
-        requires:
-          -build
+          requires:
+            - build 
       - deploy:
-        requires:
-          - test
-        filters:
-          branches:
-            only: main
+          requires:
+            - test
+          filters:
+            branches:
+              only: main
